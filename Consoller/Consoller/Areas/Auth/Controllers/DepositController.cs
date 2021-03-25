@@ -143,6 +143,7 @@ namespace Consoller.Areas.Auth.Controllers
 
                                     receiptdetail.RollNo = rollno;
                                     receiptdetail.ReciptNo = receiptno;
+                                    receiptdetail.discount = Discount;
                                     receiptdetail.CourseId = CourseId;
                                     receiptdetail.Date = date;
                                     receiptdetail.role= HttpContext.User.Identity.Name;
@@ -211,6 +212,7 @@ namespace Consoller.Areas.Auth.Controllers
 
                                 receiptdetail.RollNo = rollno;
                                 receiptdetail.ReciptNo = receiptno;
+                                receiptdetail.discount = Discount;
                                 receiptdetail.CourseId = CourseId;
                                 receiptdetail.Date = date;
                                 receiptdetail.Amount = Amount;

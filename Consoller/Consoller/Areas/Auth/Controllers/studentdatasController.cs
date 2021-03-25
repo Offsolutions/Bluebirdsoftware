@@ -274,8 +274,8 @@ namespace Consoller.Areas.Auth.Controllers
                 db.Entry(tblstudentdata).State = EntityState.Modified;
                 db.SaveChanges();
 
-                objsql.ExecuteNonQuery("update fees_master set status='0' where rollno='" + tblstudentdata.rollno + "' and franchid='" + a + "'");
-                objsql.ExecuteNonQuery("update studentcourses set status='0' where rollno='" + tblstudentdata.rollno + "' and uid='" + a + "'");
+              //  objsql.ExecuteNonQuery("update fees_master set status='0' where rollno='" + tblstudentdata.rollno + "' and franchid='" + a + "'");
+               // objsql.ExecuteNonQuery("update studentcourses set status='0' where rollno='" + tblstudentdata.rollno + "' and uid='" + a + "'");
 
                 //Fees_Master feemaster = db.Fees_Master.FirstOrDefault(x => x.RollNo == tblstudentdata.rollno && x.franchid==a);
                 //feemaster.Status = tblstudentdata.Status;

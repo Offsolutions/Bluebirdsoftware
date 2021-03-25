@@ -218,6 +218,7 @@ namespace Consoller.Areas.Auth.Models
         public string franchid { get; set; }
         public string Type { get; set; }
         public string role { get; set; }
+        public int discount { get; set; }=0;
     }
     public class tblReceipt
     {
