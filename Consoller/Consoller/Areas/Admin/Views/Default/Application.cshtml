@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Consoller.Areas.Auth.Models.online>
+
+@{
+    ViewBag.Title = "Application";
+    Layout = "~/Areas/Admin/Views/Shared/Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <div class="col-md-12 padding-l-0">
+            @*<p>
+                @Html.ActionLink("Create New", "Create")
+            </p>*@
+            <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Date)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Mobile)
+                        </th>
+
+                        <th>
+                            From
+                        </th>
+                        <th>
+                            Leads
+                        </th>
+
+                        <th></th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Mobile)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.City)
+                        </td>
+                        <td style="text-align:center">
+                            @if (item.Country == "Canada" || item.Country == "CANADA")
+                            {
+                                <img src="~/image/canada.png" />
+                            }
+                        </td>
+
+                        <td>
+
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Oid }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Oid }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Oid }) |
+                           
+
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+        </div>
+
+
+
+
+    </div>
+
+</div>
+
