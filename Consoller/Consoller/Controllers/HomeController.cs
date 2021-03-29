@@ -15,6 +15,7 @@ namespace Consoller.Controllers
     public class HomeController : Controller
     {
         Data dd = new Data();
+        SQLHelper objsql = new SQLHelper();
         public ActionResult Index()
         {
             
@@ -99,6 +100,13 @@ namespace Consoller.Controllers
             return new JsonResult { Data = list, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
+        public ActionResult Reports(Helper help)
+        {
+            string date = System.DateTime.Now.ToString("MM/dd/yyyy");
 
+            string per = help.Teacher();
+            DataTable d1 = objsql.GetTable("select  * from recipt_details where date='" + date + "' and role='" + per + "'");
+            return View(d1);
+        }
     }
 }

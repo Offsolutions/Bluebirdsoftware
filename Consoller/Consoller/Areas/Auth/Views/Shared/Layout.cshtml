@@ -515,16 +515,13 @@
                                 </a>
                             </li>
                         }
-
                         <li>
                             <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                <i class="bx bx-cog"></i>
-                                <span>Settings</span>
+                                <i class="bx bxs-school"></i>
+                                <span>Reports</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li>
-                                    <a href="@Url.Action("Index","Receipt")"> Receipt No.</a>
-                                </li>
+                             
                                 <li>
                                     <a href="@Url.Action("ExpenseReport", "DailyReports")"> Expense Report</a>
                                 </li>
@@ -540,6 +537,19 @@
                                 <li>
                                     <a href="@Url.Action("TeacherReport", "DailyReports")"> Teacher Report</a>
                                 </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                <i class="bx bx-cog"></i>
+                                <span>Settings</span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li>
+                                    <a href="@Url.Action("Index","Receipt")"> Receipt No.</a>
+                                </li>
+                             
                                 <li>
                                     <a href="@Url.Action("Index","Categories")"> Categories</a>
                                 </li>

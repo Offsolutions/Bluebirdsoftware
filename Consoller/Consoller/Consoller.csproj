@@ -832,6 +832,7 @@
     <Content Include="Areas\Admin\Views\Default\Application.cshtml" />
     <Content Include="Areas\Admin\Views\Student\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Student\Logs.cshtml" />
+    <Content Include="Areas\Auth\Views\DailyReports\Userreport.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Alert.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -964,6 +965,7 @@
     <Content Include="Views\Consoller\IeltsDetails.cshtml" />
     <Content Include="Views\Consoller\IeltsLogs.cshtml" />
     <Content Include="Views\Attendence\Create.cshtml" />
+    <Content Include="Views\Home\Reports.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -16,6 +16,7 @@ namespace Consoller.Areas.Auth.Controllers
         dbcontext db = new dbcontext  ();
         DashModel dm = new DashModel();
         DataTable dd = new DataTable();
+        SQLHelper objsql = new SQLHelper();
         // GET: Auth/DailyReports
         [HttpGet]
         public ActionResult ExpenseReport()
@@ -77,7 +78,7 @@ namespace Consoller.Areas.Auth.Controllers
         [HttpPost]
         public ActionResult TeacherReport([Bind(Include ="UserId,From,To")] tblstudentdata student)
         {
-            SQLHelper objsql = new SQLHelper();
+     
             dd = objsql.GetTable("select r.rollno,r.date,s.name,r.CourseId,r.amount from recipt_details r,tblstudentdatas s where r.date between '" + student.From+"' and '"+student.To+"' and r.rollno=s.rollno and s.status='1' and s.userid='"+student.UserId+"'");
             return View(dd);
         }
@@ -94,6 +95,14 @@ namespace Consoller.Areas.Auth.Controllers
             string date = student.From.ToString("MM/dd/yyyy");
             string id = student.UserId.ToString();
             return View(db.MorningAttendeces.Where(x=>x.Date==date && x.Role==id));
+        }
+        public ActionResult Userreport(Helper help)
+        {
+            string date = System.DateTime.Now.ToString("MM/dd/yyyy");
+            
+            string per = help.Permission();
+            DataTable d1 = objsql.GetTable("select  * from recipt_details where date='" + date + "' and role='" + per + "'");
+            return View(d1);
         }
     }
 }
