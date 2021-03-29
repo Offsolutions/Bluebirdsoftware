@@ -45,7 +45,7 @@
                                     <div class="card-body">
                                         <div class="media-body">
                                             <h5>IELTS Income</h5>
-                                            <p class="text-muted font-weight-medium">Today : <span>@dash.TodayIelts()</span></p>
+                                            @*<p class="text-muted font-weight-medium">Today : <span>@dash.TodayIelts()</span></p>*@
                                             @*<p class="text-muted font-weight-medium">Yesterday : <span>@Model.yesterdayIelts()</span></p>
                                                 <p class="text-muted font-weight-medium">This Month : <span>@Model.ThisMonthIelts()</span></p>
                                                 <p class="text-muted font-weight-medium">Last Month : <span>@Model.LastMonthIelts()</span></p>*@
@@ -188,6 +188,12 @@
 
                             </table>
                         </div>
+
+                    </div>
+                </div>
+                <div class="d-print-none">
+                    <div class="float-right">
+                        <a href="javascript:window.print()" class="btn btn-success waves-effect waves-light mr-1"><i class="fa fa-print"></i> Print </a>
 
                     </div>
                 </div>
