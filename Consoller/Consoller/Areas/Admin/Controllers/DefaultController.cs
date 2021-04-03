@@ -184,5 +184,15 @@ namespace Consoller.Areas.Admin.Controllers
             return View(mymodel);
 
         }
+        [HttpGet]
+        public ActionResult ExpenseReport()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ExpenseReport(Expense ex)
+        {
+            return View(db.Expenses.Where(x => x.Date >=ex.Date1 && x.Date<=ex.Date2).ToList());
+        }
     }
 }

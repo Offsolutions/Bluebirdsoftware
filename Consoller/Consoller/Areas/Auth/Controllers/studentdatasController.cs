@@ -99,6 +99,8 @@ namespace Consoller.Areas.Auth.Controllers
                     if (ModelState.IsValid)
                     {
                         scourse.CourseId = CourseId;
+                        Course co = db.Courses.FirstOrDefault(x => x.CourseId == scourse.CourseId);
+                        int alter = Convert.ToInt32(co.Days);
                         string a = help.Permission();
                         StudentCourse studentcourse = new StudentCourse();
                         #region insert student table
@@ -132,7 +134,8 @@ namespace Consoller.Areas.Auth.Controllers
                             feemaster.Date = tblstudentdata.date;
                             feemaster.CourseId = scourse.CourseId;
                             //feemaster.CourseId = CourseId;
-                            feemaster.AlertDate = System.DateTime.Now.AddDays(2);
+                          
+                            feemaster.AlertDate = System.DateTime.Now.AddDays(alter);
                             feemaster.discount = tblstudentdata.discount;
                             feemaster.Status = tblstudentdata.Status;
                             feemaster.TotalFees = Convert.ToInt32(scourse.Fees);
@@ -146,7 +149,7 @@ namespace Consoller.Areas.Auth.Controllers
                             studentcourse.RollNo = tblstudentdata.rollno;
                             studentcourse.CourseId = scourse.CourseId;
                             studentcourse.Admitdate = scourse.Admitdate;
-                            studentcourse.enddate = Convert.ToDateTime(scourse.Admitdate).AddDays(Convert.ToInt32(30));
+                            studentcourse.enddate = Convert.ToDateTime(scourse.Admitdate).AddDays(Convert.ToInt32(co.Days));
                             studentcourse.Fees = Convert.ToInt32(scourse.Fees).ToString();
                             studentcourse.Uid = help.Permission();
                             studentcourse.Token = token;
@@ -164,7 +167,7 @@ namespace Consoller.Areas.Auth.Controllers
                             feemaster.CourseId = scourse.CourseId;
                             feemaster.role= HttpContext.User.Identity.Name; 
                             //feemaster.CourseId = CourseId;
-                            feemaster.AlertDate = System.DateTime.Now.AddDays(2);
+                            feemaster.AlertDate = System.DateTime.Now.AddDays(alter);
                             feemaster.discount = tblstudentdata.discount;
                             feemaster.Status = tblstudentdata.Status;
                             feemaster.TotalFees = Convert.ToInt32(scourse.Fees);
@@ -179,7 +182,7 @@ namespace Consoller.Areas.Auth.Controllers
                             studentcourse.CourseId = scourse.CourseId;
                             studentcourse.Admitdate = scourse.Admitdate;
                             studentcourse.role= HttpContext.User.Identity.Name;
-                            studentcourse.enddate = Convert.ToDateTime(scourse.Admitdate).AddDays(Convert.ToInt32(30));
+                            studentcourse.enddate = Convert.ToDateTime(scourse.Admitdate).AddDays(Convert.ToInt32(co.Days));
                             studentcourse.Fees = Convert.ToInt32(scourse.Fees).ToString();
                             studentcourse.Uid = help.Permission();
                             studentcourse.Token = token;

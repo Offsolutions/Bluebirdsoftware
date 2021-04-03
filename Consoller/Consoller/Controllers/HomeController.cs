@@ -108,5 +108,13 @@ namespace Consoller.Controllers
             DataTable d1 = objsql.GetTable("select  * from recipt_details where date='" + date + "' and role='" + per + "'");
             return View(d1);
         }
+        public ActionResult DemoReports(Helper help)
+        {
+            string date = System.DateTime.Now.ToString("MM/dd/yyyy");
+
+            string per = help.Teacher();
+            DataTable d1 = objsql.GetTable("select  * from recipt_details where courseid='1007'");
+            return View(d1);
+        }
     }
 }

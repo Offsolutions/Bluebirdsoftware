@@ -121,7 +121,8 @@
                                         </td>
                                         <td>
                                             @{
-                                                tblstudentdata stu = db.tblstudentdata.FirstOrDefault(x => x.rollno == rollno && x.uid == item["franchid"] && x.Status == true);
+                                                string franch = item["franchid"].ToString();
+                                                tblstudentdata stu = db.tblstudentdata.FirstOrDefault(x => x.rollno == rollno && x.uid == franch && x.Status == true);
                                             }
                                             @stu.name
                                         </td>
@@ -147,20 +148,20 @@
                                         </td>
                                         <td>
                                             @{
-                                                Fees_Master fee = db.Fees_Master.FirstOrDefault(x => x.RollNo == rollno && x.franchid == item["franchid"] && x.Status == true);
+                                                Fees_Master fee = db.Fees_Master.FirstOrDefault(x => x.RollNo == rollno && x.franchid == franch && x.Status == true);
                                                 var balance = (Convert.ToInt32(fee.TotalFees) - (Convert.ToInt32(fee.PaidFees) + Convert.ToInt32(fee.discount)));
                                             }
                                             @balance
                                         </td>
                                         <td>
                                             @{
-                                                StudentCourse sc = db.StudentCourses.FirstOrDefault(x => x.RollNo == rollno && x.Uid == item["franchid"] && x.Status == true);
+                                                StudentCourse sc = db.StudentCourses.FirstOrDefault(x => x.RollNo == rollno && x.Uid == franch && x.Status == true);
                                             }
                                             @Convert.ToDateTime(sc.Admitdate).ToString("dd/MM/yyyy")
                                         </td>
                                         <td>
                                             @{
-                                                StudentCourse sc1 = db.StudentCourses.FirstOrDefault(x => x.RollNo == rollno && x.Uid == item["franchid"] && x.Status == true);
+                                                StudentCourse sc1 = db.StudentCourses.FirstOrDefault(x => x.RollNo == rollno && x.Uid == franch && x.Status == true);
                                             }
                                             @Convert.ToDateTime(sc1.enddate).ToString("dd/MM/yyyy")
                                         </td>
