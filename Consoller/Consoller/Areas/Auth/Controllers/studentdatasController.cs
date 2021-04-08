@@ -89,7 +89,7 @@ namespace Consoller.Areas.Auth.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,rollno,name,dob,fathername,address,phone,fatherphn,language,board,qualification,coaching,institutename,type,refferedby,image,uid,Status,username,password,gender,remarks,email,discount,date,Time,UserId,Material,By")] tblstudentdata tblstudentdata, HttpPostedFileBase file, Helper Help,[Bind(Include ="CourseId,AdmitDate,Fees,enddate,Days")] StudentCourse scourse,int CourseId)
+        public ActionResult Create([Bind(Include = "Id,rollno,name,dob,fathername,address,phone,fatherphn,language,board,qualification,coaching,institutename,type,refferedby,image,uid,Status,username,password,gender,remarks,email,discount,date,Time,UserId,Material,By")] tblstudentdata tblstudentdata, HttpPostedFileBase file, Helper Help,[Bind(Include ="CourseId,AdmitDate,Fees,enddate,Days,FixedFee,Reason")] StudentCourse scourse,int CourseId)
         {
 
             using (var transaction = db.Database.BeginTransaction())
@@ -98,6 +98,7 @@ namespace Consoller.Areas.Auth.Controllers
                 {
                     if (ModelState.IsValid)
                     {
+                       // DataTable dd=objsql.GetTable()
                         scourse.CourseId = CourseId;
                         Course co = db.Courses.FirstOrDefault(x => x.CourseId == scourse.CourseId);
                         int alter = Convert.ToInt32(co.Days);
@@ -127,6 +128,24 @@ namespace Consoller.Areas.Auth.Controllers
                         var token = db.Fees_Master.Where(x => x.franchid == a && x.Status == true).Max(x => x.Token);
                         if (token != null)
                         {
+                            if(scourse.FixedFee==0)
+                            {
+                                studentcourse.FixedFee = studentcourse.FixedFee;
+                            }
+                            else
+                            {
+                                if(scourse.Reason==null)
+                                {
+                                    TempData["danger"] = "Please Update Reason";
+                                    transaction.Rollback();
+                                    ViewBag.CourseId = new SelectList(db.Courses.Where(x => x.franchid == a), "CourseId", "CourseName", scourse.CourseId);
+                                    ViewBag.UserId = new SelectList(db.tblreceptionists.Where(x => x.franchid == a && x.Type == "Teacher"), "Id", "Name", studentdata.UserId);
+                                      ViewBag.Time = new SelectList(db.Timings.Where(x => x.franchid == a), "Tid", "BatchTime", studentdata.Time);
+                                    return View(tblstudentdata);
+                                }
+                                studentcourse.FixedFee = scourse.FixedFee;
+                                studentcourse.Reason = scourse.Reason;
+                            }
                             token += 1;
                             Fees_Master feemaster = new Fees_Master();
                             feemaster.RollNo = tblstudentdata.rollno;
@@ -155,12 +174,28 @@ namespace Consoller.Areas.Auth.Controllers
                             studentcourse.Token = token;
                             studentcourse.role = HttpContext.User.Identity.Name;
                             studentcourse.Status = tblstudentdata.Status;
+
+
                             db.StudentCourses.Add(studentcourse);
                             db.SaveChanges();
                         }
                         else
                         {
                             token = 1;
+                            if (studentcourse.FixedFee != 0)
+                            {
+                                studentcourse.FixedFee = studentcourse.FixedFee;
+                            }
+                            else
+                            {
+                                if (studentcourse.Reason == null)
+                                {
+                                    TempData["danger"] = "Please Update Reason";
+                                    transaction.Rollback();
+                                    ViewBag.CourseId = new SelectList(db.Courses.Where(x => x.franchid == a), "CourseId", "CourseName", scourse.CourseId);
+                                    return View(tblstudentdata);
+                                }
+                            }
                             Fees_Master feemaster = new Fees_Master();
                             feemaster.RollNo = tblstudentdata.rollno;
                             feemaster.Date = tblstudentdata.date;

@@ -92,6 +92,7 @@ namespace Consoller.Areas.Auth.Models
         [Display(Name = "Material")]
         public bool Material { get; set; } = false;
         public string role { get; set; }
+        public string deactivate { get; set; }
     }
     public enum gender
     {
@@ -197,7 +198,8 @@ namespace Consoller.Areas.Auth.Models
         public int? Token { get; set; }
         public bool Status { get; set; }
         public string role { get; set; }
-
+        public int FixedFee { get; set; } = 0;
+        public string Reason { get; set; }
     }
     public class Recipt_Details
     {
