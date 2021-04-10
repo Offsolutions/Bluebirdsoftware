@@ -969,6 +969,7 @@
     <Content Include="Views\Attendence\Create.cshtml" />
     <Content Include="Views\Home\Reports.cshtml" />
     <Content Include="Views\Home\DemoReports.cshtml" />
+    <Content Include="Views\Home\StudentReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

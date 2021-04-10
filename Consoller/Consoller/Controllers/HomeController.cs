@@ -116,5 +116,16 @@ namespace Consoller.Controllers
             DataTable d1 = objsql.GetTable("select  * from recipt_details where courseid='1007'");
             return View(d1);
         }
+        [HttpGet]
+        public ActionResult StudentReport()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult StudentReport( tblstudentdata stu)
+        {
+            DataTable d1 = objsql.GetTable("select  * from tblstudentdatas where date>='"+stu.To+"' and date<='"+stu.From+"'");
+            return View(d1);
+        }
     }
 }
