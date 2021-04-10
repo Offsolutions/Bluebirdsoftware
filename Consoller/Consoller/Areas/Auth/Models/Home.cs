@@ -283,6 +283,8 @@ namespace Consoller.Areas.Auth.Models
         [DataType(DataType.Time)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
         public TimeSpan? EndTime { get; set; }
+        [NotMapped]
+        public int OTP { get; set; }
     }
     public class tblinquiry
     {

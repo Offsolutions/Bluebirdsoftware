@@ -158,7 +158,7 @@ namespace Consoller.Areas.Auth.Controllers
               //  string msg = "http://inquiry.bluebirdimmigrations.com/Default?f=" + message;
                 string msg = ff.Immigration+message;
 
-                help.sendsms(mobile, msg);
+                help.sendsms(mobile, "Dear, '"+msg+"'");
                 TempData["Success"] = "Send Message";
                 return View();
             }
@@ -176,7 +176,7 @@ namespace Consoller.Areas.Auth.Controllers
                 string message = franch + '/' + mobile;
                // string msg = "http://inquiry.bluebirdimmigrations.com/Ielts?f=" + message;
                 string msg = ff.Ielts + message;
-            help.sendsms(mobile, msg);
+            help.sendsms(mobile,"Dear, '"+ msg + "' ");
                 TempData["Success"] = "Send Message";
                 return RedirectToAction("Form","onlines");
             

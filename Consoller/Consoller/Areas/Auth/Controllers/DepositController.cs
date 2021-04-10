@@ -162,7 +162,7 @@ namespace Consoller.Areas.Auth.Controllers
                                     {
                                         if (sms != null)
                                         {
-                                            string msg = "Dear " + Convert.ToString(ss.name) + ". Thank You for Deposit Rs." + Amount + ". Thanks for Joining Us.";
+                                            string msg = "Dear, " + Convert.ToString(ss.name) + ". Thank You for Deposit Rs." + Amount + ". Thanks for Joining Us.";
                                             string result = Help.apicall("http://sms.sms.officialsolutions.in/sendSMS?username=" + sms.Username + "&message=" + msg + "&sendername=" + sms.Senderid + "&smstype=TRANS&numbers=" + ss.phone + "&apikey=" + sms.Api + "");
                                         }
                                         TempData["Success"] = "SMS Send Successfully";
