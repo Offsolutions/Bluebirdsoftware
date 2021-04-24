@@ -84,6 +84,8 @@ namespace Consoller.Areas.Auth.Controllers
                         //    objsql.ExecuteNonQuery("update studentcourses set status='0' where id='" + sc.Id + "'");
                         //    objsql.ExecuteNonQuery("update fees_master set status='0' where id='" + fm.Id + "'");
                         //}
+                       // Course cc = db.Courses.FirstOrDefault(x => x.CourseId == student_Course.CourseId);
+
                         var token = db.Fees_Master.Where(x => x.franchid == a && x.Status == true).Max(x => x.Token);
                         if (token != null)
                         {
