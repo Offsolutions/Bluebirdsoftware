@@ -971,6 +971,7 @@
     <Content Include="Views\Home\DemoReports.cshtml" />
     <Content Include="Views\Home\StudentReport.cshtml" />
     <Content Include="Views\Accounts\OTP.cshtml" />
+    <Content Include="Views\Credential\Login2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

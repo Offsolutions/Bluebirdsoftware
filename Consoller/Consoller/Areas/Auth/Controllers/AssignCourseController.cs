@@ -87,12 +87,13 @@ namespace Consoller.Areas.Auth.Controllers
                         var token = db.Fees_Master.Where(x => x.franchid == a && x.Status == true).Max(x => x.Token);
                         if (token != null)
                         {
-
+                            Course cc = db.Courses.FirstOrDefault(x => x.CourseId == student_Course.CourseId);
+                            int days =Convert.ToInt32(cc.Days);
                             token += 1;
                             //string a= User.IsInRole("Franchisee") ? help.Franchisee() : help.Receptionist();
                             student_Course.Uid = User.IsInRole("Franchisee") ? help.Franchisee() : help.Receptionist();
-                            student_Course.enddate = Convert.ToDateTime(student_Course.Admitdate).AddDays(student_Course.Days);
-                            student_Course.Fees = (Convert.ToInt32(student_Course.Fees) * Convert.ToInt32(student_Course.Days)).ToString();
+                            student_Course.enddate = Convert.ToDateTime(student_Course.Admitdate).AddDays(days);
+                            student_Course.Fees = cc.Fees;
                             student_Course.RollNo = rollno;
                             student_Course.Token = token;
                             db.StudentCourses.Add(student_Course);
@@ -105,7 +106,7 @@ namespace Consoller.Areas.Auth.Controllers
                             feemaster1.AlertDate = System.DateTime.Now.AddDays(2);
                             feemaster1.discount = 0;
                             feemaster1.Status = true;
-                            feemaster1.TotalFees = int.Parse(student_Course.Fees);
+                            feemaster1.TotalFees = int.Parse(cc.Fees);
                             feemaster1.franchid = User.IsInRole("Franchisee") ? help.Franchisee() : help.Receptionist();
                             feemaster1.Token = token;
                             // feemaster.franchid= HttpContext.User.Identity.Name;

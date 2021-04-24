@@ -72,7 +72,7 @@ namespace Consoller.Areas.Auth.Controllers
         }
 
         // GET: Auth/studentdatas/Create
-        [Authorize(Roles ="Franchisee,Consoller")]
+        [Authorize(Roles = "Franchisee,Consoller,Receptionist")]
         public ActionResult Create()
         {
             string a = User.IsInRole("Franchisee") ? help.Franchisee() : help.Receptionist();
@@ -98,7 +98,21 @@ namespace Consoller.Areas.Auth.Controllers
                 {
                     if (ModelState.IsValid)
                     {
-                       // DataTable dd=objsql.GetTable()
+                        if (User.IsInRole("Receptionists"))
+                        {
+                            DataTable dd2 = objsql.GetTable("select * from tblstudentdatas where name='" + tblstudentdata.name + "' and fathername='" + tblstudentdata.fathername + "' and phone='" + tblstudentdata.phone + "'");
+                            if(dd2.Rows.Count>0)
+                            {
+                                goto xx;
+                            }
+                            else
+                            {
+                                transaction.Rollback();
+                                TempData["danger"] = "Student Not Exist";
+                                return View();
+                            }
+                        }
+                        xx:
                         scourse.CourseId = CourseId;
                         Course co = db.Courses.FirstOrDefault(x => x.CourseId == scourse.CourseId);
                         int alter = Convert.ToInt32(co.Days);
