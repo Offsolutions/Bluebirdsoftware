@@ -477,7 +477,7 @@
                             @*<a href="javascript:void(0);" onclick="AddBook(@Model.inquiryid)" class="red-bg">Add Offer Letter</a>*@
 
                             @*@using (Html.BeginForm())*@
-                            <div class="col-md-6">
+                            <div class="col-md-6" style="display:none">
                                 <label>Date</label>
                                 @Html.EditorFor(model => med.Date, new { htmlAttributes = new { @class = "form-control", id = "Date", placeholder = "Date" } })
 
@@ -672,7 +672,7 @@
                                 @*<a href="javascript:void(0);" onclick="AddBook(@Model.inquiryid)" class="red-bg">Add Offer Letter</a>*@
 
                                 @*@using (Html.BeginForm())*@
-                                <div class="col-md-4">
+                                <div class="col-md-4" style="display:none">
                                     <label>Date</label>
                                     @Html.EditorFor(model => gic.Date, new { htmlAttributes = new { @class = "form-control", id = "GicDate", placeholder = "Date" } })
 
@@ -719,7 +719,7 @@
                     <div class="tab-pane" id="profile1" role="tabpanel">
                         <h3>Payment Details</h3>
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-4" style="display:none">
                                 <label>Date</label>
                                 <input type="date" name="date" id="date" class="form-control" />
                             </div>

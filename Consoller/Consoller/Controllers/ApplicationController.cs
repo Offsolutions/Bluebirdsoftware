@@ -122,6 +122,7 @@ namespace Consoller.Controllers
                     Recipt.ReciptNo = Help.recipt();
                     
                     Recipt.RecivedBy = Help.Teacher();
+                    Recipt.Date = System.DateTime.Now;
                     db.ApplicationRecipts.Add(Recipt);
                     db.SaveChanges();
                     ll = db.Ledgers.FirstOrDefault(x => x.ApplicationNo == Recipt.ApplicationNo);
@@ -317,6 +318,7 @@ namespace Consoller.Controllers
                     {
                        
                         online onlines = db.onlines.FirstOrDefault(x => x.inquiryid == inquiryid);
+                        gic.Date = System.DateTime.Now;
                         gic.Status = true;
                         gic.CreatedBy = help.Teacher();
                         db.Gic.Add(gic);
@@ -373,6 +375,7 @@ namespace Consoller.Controllers
                         var inquiryid = db.Applications.FirstOrDefault(x => x.ApplicationNo == Med.ApplicationNo).InquiryId;
                         online onlines = db.onlines.FirstOrDefault(x => x.inquiryid == inquiryid);
                         Med.BookedBy = help.Teacher();
+                        Med.Date = System.DateTime.Now;
                         db.Medicals.Add(Med);
                         db.SaveChanges();
                         Process pr = db.Process.FirstOrDefault(x => x.ApplicationNo == Med.ApplicationNo);
