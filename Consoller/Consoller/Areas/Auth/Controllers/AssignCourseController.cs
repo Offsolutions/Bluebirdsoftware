@@ -54,6 +54,7 @@ namespace Consoller.Areas.Auth.Controllers
                 ViewBag.RoomId = new SelectList(db.tblrooms, "RoomId", "room");
                 ViewBag.rollno = rollno;
                 StudentCourse ss = new StudentCourse();
+                ss.Admitdate = System.DateTime.Now;
                 ss.RollNo = rollno;
                 return View(ss);
             }

@@ -134,6 +134,7 @@ namespace Consoller.Areas.Auth.Controllers
                         tblstudentdata.uid = help.Permission(); //franchid Detail
                         tblstudentdata.image = Help.uploadfile(file);
                         tblstudentdata.role = HttpContext.User.Identity.Name;
+
                         db.tblstudentdata.Add(tblstudentdata);
                         db.SaveChanges();
                         #endregion
@@ -181,8 +182,8 @@ namespace Consoller.Areas.Auth.Controllers
                             
                             studentcourse.RollNo = tblstudentdata.rollno;
                             studentcourse.CourseId = scourse.CourseId;
-                            studentcourse.Admitdate = scourse.Admitdate;
-                            studentcourse.enddate = Convert.ToDateTime(scourse.Admitdate).AddDays(Convert.ToInt32(co.Days));
+                            studentcourse.Admitdate = studentdata.date;
+                            studentcourse.enddate = Convert.ToDateTime(studentdata.date).AddDays(Convert.ToInt32(co.Days));
                             studentcourse.Fees = Convert.ToInt32(scourse.Fees).ToString();
                             studentcourse.Uid = help.Permission();
                             studentcourse.Token = token;
@@ -229,9 +230,9 @@ namespace Consoller.Areas.Auth.Controllers
 
                             studentcourse.RollNo = tblstudentdata.rollno;
                             studentcourse.CourseId = scourse.CourseId;
-                            studentcourse.Admitdate = scourse.Admitdate;
+                            studentcourse.Admitdate = studentdata.date;
                             studentcourse.role= HttpContext.User.Identity.Name;
-                            studentcourse.enddate = Convert.ToDateTime(scourse.Admitdate).AddDays(Convert.ToInt32(co.Days));
+                            studentcourse.enddate = Convert.ToDateTime(studentdata.date).AddDays(Convert.ToInt32(co.Days));
                             studentcourse.Fees = Convert.ToInt32(scourse.Fees).ToString();
                             studentcourse.Uid = help.Permission();
                             studentcourse.Token = token;

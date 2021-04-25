@@ -49,7 +49,7 @@ namespace Consoller.Areas.Auth.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Oid,Date,Refusal,RefusalCountry,Name,Mobile,Email,City,Marital,Gender,VisaType,Country,Source,Qualification,PassingYear,Percentage,Paper,TestType,Band,Docs,Passport,inquiryid,franchid,Reading,Listening,Writing,Speaking,RefusalNo,Others,Alternative,type,Sign")] online online, Helper help)
+        public async Task<ActionResult> Create([Bind(Include = "Oid,Date,Refusal,RefusalCountry,Name,Mobile,Email,City,Marital,Gender,VisaType,Country,Source,Qualification,PassingYear,Percentage,Paper,TestType,Band,Docs,Passport,inquiryid,franchid,Reading,Listening,Writing,Speaking,RefusalNo,Others,Alternative,type,Sign,passportno")] online online, Helper help)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +96,7 @@ namespace Consoller.Areas.Auth.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Oid,Date,Refusal,RefusalCountry,Name,Mobile,Email,City,Marital,Gender,VisaType,Country,Source,Qualification,PassingYear,Percentage,Paper,TestType,Band,Docs,Passport,inquiryid,franchid,Reading,Listening,Writing,Speaking,RefusalNo,Others,Type,Sign")] online online)
+        public async Task<ActionResult> Edit([Bind(Include = "Oid,Date,Refusal,RefusalCountry,Name,Mobile,Email,City,Marital,Gender,VisaType,Country,Source,Qualification,PassingYear,Percentage,Paper,TestType,Band,Docs,Passport,inquiryid,franchid,Reading,Listening,Writing,Speaking,RefusalNo,Others,Type,Sign,passportno")] online online)
         {
             if (ModelState.IsValid)
             {

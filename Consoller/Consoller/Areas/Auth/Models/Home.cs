@@ -647,6 +647,8 @@ namespace Consoller.Areas.Auth.Models
         public string teacher { get; set; }
         public string Sign { get; set; }
         public string type { get; set; }
+        [Display(Name = "Passport No")]
+        public String passportno { get; set; }
     }
     public class Logs
     {
